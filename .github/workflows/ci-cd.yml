@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read  # Pour checkout
+  pages: write    # Pour déploiement sur GitHub Pages
+  id-token: write # Pour authentification
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
