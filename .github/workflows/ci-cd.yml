@@ -1,0 +1,22 @@
+name: Pipeline CI/CD Simulation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Installer Node.js pour les tests
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Exécuter les tests
+        run: node test.js  # Simule un test simple
+      - name: Déployer sur GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
