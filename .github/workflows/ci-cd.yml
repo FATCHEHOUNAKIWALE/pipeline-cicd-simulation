@@ -5,9 +5,9 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read  # Pour checkout
-  pages: write    # Pour déploiement sur GitHub Pages
-  id-token: write # Pour authentification
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build-and-test:
@@ -18,10 +18,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - name: Vérifier Node.js
+        run: node --version
       - name: Exécuter les tests
-        run: node test.js  # Simule un test simple
+        run: node test.js
       - name: Déployer sur GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.MY_PAT }}
           publish_dir: ./
