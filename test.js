@@ -1,0 +1,1 @@
+console.log("Test passé si ce message s'affiche.");
